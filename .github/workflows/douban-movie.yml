@@ -24,9 +24,9 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
-          DOUBAN_API_KEY: ${{ secrets.DOUBAN_API_KEY }}
-          DOUBAN_NAME: ${{ secrets.DOUBAN_NAME }}
-          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
-          MOVIE_DATABASE_ID: ${{ secrets.MOVIE_DATABASE_ID }}
+      - EXPORT DOUBAN_API_KEY=${{ secrets.DOUBAN_API_KEY }}
+      - EXPORT DOUBAN_API_KEY=DOUBAN_NAME=${{ secrets.DOUBAN_NAME }}
+      - EXPORT DOUBAN_API_KEY=NOTION_TOKEN=${{ secrets.NOTION_TOKEN }}
+      - EXPORT DOUBAN_API_KEY=MOVIE_DATABASE_ID=${{ secrets.MOVIE_DATABASE_ID }}
       - run: npm ci
       - run: npm run dev
