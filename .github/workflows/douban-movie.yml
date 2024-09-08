@@ -29,4 +29,5 @@ jobs:
           DOUBAN_NAME: ${{ secrets.DOUBAN_NAME }}
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
           MOVIE_DATABASE_ID: ${{ secrets.MOVIE_DATABASE_ID }}
-      - run: npm ci && node index.js DOUBAN_NAME DOUBAN_API_KEY NOTION_TOKEN MOVIE_DATABASE_ID
+      - run: npm ci
+      - run: DOUBAN_API_KEY=${{ secrets.DOUBAN_API_KEY }} DOUBAN_NAME=${{ secrets.DOUBAN_NAME }} NOTION_TOKEN=${{ secrets.NOTION_TOKEN }} MOVIE_DATABASE_ID=${{ secrets.MOVIE_DATABASE_ID }} node index.js
