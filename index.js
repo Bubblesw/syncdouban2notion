@@ -172,8 +172,8 @@ const bootstrap = async () => {
   // 获取全部导演
   const directorMap = new Set();
   totalList.forEach((item) => {
-    const { directors } = item.subject;
-    directors.forEach((director) => {
+    const { directors } = item.subject || {};
+    (directors || []).forEach((director) => {
       directorMap.add(director.name);
     });
   });
@@ -227,8 +227,8 @@ const bootstrap = async () => {
   // 获取全部演员
   const actorMap = new Set();
   totalList.forEach((item) => {
-    const { actors } = item.subject;
-    actors.slice(0, ACTOR_COUNT).forEach((actor) => {
+    const { actors } = item.subject || {};
+    (actors || []).slice(0, ACTOR_COUNT).forEach((actor) => {
       actorMap.add(actor.name);
     });
   });
@@ -282,8 +282,8 @@ const bootstrap = async () => {
   // 获取全部分类
   const typeMap = new Set();
   totalList.forEach((item) => {
-    const { genres } = item.subject;
-    genres.forEach((type) => {
+    const { genres } = item.subject || {};
+    (genres || []).forEach((type) => {
       typeMap.add(type);
     });
   });
@@ -337,7 +337,7 @@ const bootstrap = async () => {
   // 获取全部电影
   const movieSet = new Set();
   totalList.forEach((item) => {
-    movieSet.add(item.subject.id);
+    item.subject && movieSet.add(item.subject.id);
   });
   const movieList = Array.from(movieSet);
   console.log("获取全部电影数据...");
